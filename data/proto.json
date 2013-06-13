@@ -1,0 +1,43 @@
+{
+	"menus": [
+		{
+			"key": '1',
+			"path": "Menu_Overview.png"
+		},
+		{
+			"key": '2',
+			"path": "Menu_Reference.png"
+		},
+		{
+			"key": '5',
+			"path": "Menu_Stowage.png"
+		}
+	],
+	"screens": [
+		{
+			"path": "proto_1.png",
+			"menus": []
+		},
+		{
+			"path": "proto_2.png",
+			"menus": []
+		},
+		{
+			"path": "proto_3.png",
+			"menus": []
+		},
+		{
+			"path": "proto_4.png",
+			"menus": []
+		},
+		{
+			"path": "Step_1_1.png",
+			"menus": [
+				{
+					"key": '4',
+					"path": "Step_1_1_Media.png"
+				}
+			]
+		}
+	]
+}
