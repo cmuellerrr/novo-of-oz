@@ -15,29 +15,118 @@
 	],
 	"screens": [
 		{
-			"path": "proto_1.png",
+			"path": "Experiment_Start.png",
 			"menus": []
 		},
 		{
-			"path": "proto_2.png",
+			"path": "Objective.png",
 			"menus": []
 		},
 		{
-			"path": "proto_3.png",
+			"path": "Overview.png",
 			"menus": []
 		},
 		{
-			"path": "proto_4.png",
+			"path": "Stowage_Main.png",
+			"menus": []
+		},
+		{
+			"path": "Stowage_JEM.png",
+			"menus": []
+		},
+		{
+			"path": "Stowage_US_Lab.png",
+			"menus": []
+		},
+		{
+			"path": "Stowage_Columbus.png",
 			"menus": []
 		},
 		{
 			"path": "Step_1_1.png",
-			"menus": [
-				{
+			"menus": [{
 					"key": '4',
 					"path": "Step_1_1_Media.png"
-				}
-			]
+				}]
+		},
+		{
+			"path": "Step_1_2.png",
+			"menus": []
+		},
+		{
+			"path": "Step_2_1.png",
+			"menus": [{
+					"key": '3',
+					"path": "Step_2_x_Note.png"
+				}]
+		},
+		{
+			"path": "Step_2_2.png",
+			"menus": [{
+					"key": '3',
+					"path": "Step_2_x_Note.png"
+				},{
+					"key": '4',
+					"path": "Step_2_2_Media.png"
+				}]
+		},
+		{
+			"path": "Step_3_1.png",
+			"menus": []
+		},
+		{
+			"path": "Step_3_2.png",
+			"menus": []
+		},
+		{
+			"path": "Step_3_3.png",
+			"menus": []
+		},
+		{
+			"path": "Step_3_4.png",
+			"menus": []
+		},
+		{
+			"path": "Step_3_5.png",
+			"menus": [{
+					"key": '6',
+					"path": "Step_3_5_Input_Empty.png"
+				},{
+					"key": '7',
+					"path": "Step_3_5_Input_Filled.png"
+				}]
+		},
+		{
+			"path": "Step_4.png",
+			"menus": []
+		},
+		{
+			"path": "Step_5_1.png",
+			"menus": []
+		},
+		{
+			"path": "Step_5_2.png",
+			"menus": []
+		},
+		{
+			"path": "Step_5_3.png",
+			"menus": []
+		},
+		{
+			"path": "Step_6.png",
+			"menus": []
+		},
+		{
+			"path": "Step_7.png",
+			"menus": []
+		},
+		{
+			"path": "Step_8.png",
+			"menus": []
+		},
+		{
+			"path": "Step_9.png",
+			"menus": []
 		}
 	]
 }
