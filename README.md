@@ -6,5 +6,5 @@ An application to prototype mid-fidelity designs for a heads up display.  It pus
 
 Requires the following libraries:
 
-* [Processing 1.5.1](http://processing.org)
+* [Processing 2.0](http://processing.org)
 * [json4processing] (https://github.com/agoransson/JSON-processing)
