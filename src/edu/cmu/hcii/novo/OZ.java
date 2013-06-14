@@ -59,6 +59,7 @@ public class OZ extends PApplet {
 
 		setupScreens();
 		connect("192.168.1.101");
+		
 		sendScreenUpdate();
 	}
 
@@ -71,6 +72,10 @@ public class OZ extends PApplet {
 			image(screens.get(screenIndex).img, 0, 0, screenW, screenH);
 			if (activeMenu != null) image(activeMenu.img, 0, 0, screenW, screenH);
 		}
+	}
+	
+	public void exit() {
+		disconnect();
 	}
 
 	private void setupScreens() {
