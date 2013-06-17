@@ -16,13 +16,20 @@ import org.json.JSON;
 
 import processing.core.PApplet;
 
+/**
+ * The main class for running a mid-fidelity prototype.  This class keeps track 
+ * of the active screen and menu for the glasses.  It then sends json objects
+ * to the glasses which trigger changes.
+ * 
+ * @author Chris
+ *
+ */
 @SuppressWarnings("serial")
 public class OZ extends PApplet {
 
 	int screenW = 640;
 	int screenH = 480;
 
-	//Capture cam;
 	List<Screen> screens;
 	Map<Character, Menu> menus;
 	int screenIndex;
@@ -30,54 +37,52 @@ public class OZ extends PApplet {
 	boolean hide;
 
 	/**
+	 * Run the application.
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		PApplet.main(new String[] { "edu.cmu.hcii.novo.OZ" });
 	}
 
+	/**
+	 * Setup the mid-fidelity prototype.
+	 * Grab the screens and connect to the glasses.
+	 */
 	public void setup() {
 		size(screenW, screenH);
-
-		/*
-		String[] cameras = Capture.list();
-
-		if (cameras.length == 0) {
-			println("There are no cameras available for capture.");
-			exit();
-		} else {
-			println("Available cameras:");
-			for (int i = 0; i < cameras.length; i++) {
-				println(cameras[i]);
-			}
-			cam = new Capture(this, cameras[0]);
-
-			// Start capturing the images from the camera
-			cam.start();
-		}
-		 */
 
 		setupScreens();
 		connect("192.168.1.101");
 		
+		//TODO this needs to wait until the connection is set up.
 		sendScreenUpdate();
 	}
 
+	/**
+	 * Draw a representation of the current state on the screen so 
+	 * testers can have a view of what the user is seeing.
+	 */
 	public void draw() {
-		//if (cam.available() == true) cam.read();
-		//set(0, 0, cam);
-
 		rect(0, 0, width, height);
 		if (!hide) {
-			image(screens.get(screenIndex).img, 0, 0, screenW, screenH);
-			if (activeMenu != null) image(activeMenu.img, 0, 0, screenW, screenH);
+			image(screens.get(screenIndex).getImg(), 0, 0, screenW, screenH);
+			if (activeMenu != null) image(activeMenu.getImg(), 0, 0, screenW, screenH);
 		}
 	}
 	
+	/**
+	 * On exit, disconnect the socket from the glasses.
+	 */
 	public void exit() {
 		disconnect();
 	}
 
+	/**
+	 * Setup the prototype screens and menus.  This stuff is all
+	 * parsed from a json file describing the flow of screens 
+	 * and how input affects each one.  These special interactions 
+	 * give us flexibility in how we can interact with the prototype.
+	 */
 	private void setupScreens() {
 		screens = new ArrayList<Screen>();
 		menus = new HashMap<Character, Menu>();
@@ -88,6 +93,7 @@ public class OZ extends PApplet {
 		JSON jsonMenus = json.getArray("menus");
 		for (int i = 0; i < jsonMenus.length(); i++) {
 			JSON curMenu = jsonMenus.getJSON(i);
+			//setup a map describing how special keys affect an individual screen.
 			menus.put(curMenu.getString("key").charAt(0), new Menu(curMenu, this));
 		}
 
@@ -103,6 +109,11 @@ public class OZ extends PApplet {
 		hide = false;
 	}
 
+	/**
+	 * Handle key presses.  Navigate via arrow keys, check for any 
+	 * global menus, and check to see if the active screen has any
+	 * special interactions to follow.
+	 */
 	public void keyPressed() {
 		boolean updated = false;
 
@@ -118,6 +129,7 @@ public class OZ extends PApplet {
 			} 
 		}
 
+		//Check if the active screen has a special menu
 		if (screens.get(screenIndex).hasMenu(key)) {
 			if (activeMenu != screens.get(screenIndex).getMenu(key)) {
 				activeMenu = screens.get(screenIndex).getMenu(key);
@@ -125,6 +137,7 @@ public class OZ extends PApplet {
 				activeMenu = null;
 			}
 			updated = true;
+		//Then check if there are global menus to show
 		} else if (menus.containsKey(key)) {
 			if (activeMenu != menus.get(key)) {
 				activeMenu = menus.get(key);
@@ -132,8 +145,8 @@ public class OZ extends PApplet {
 				activeMenu = null;
 			}
 			updated = true;
+		//Any other key actions
 		} else {
-			//Any other key actions
 			if (key == 'h') {
 				hide = !hide;
 				updated = true;
@@ -143,9 +156,14 @@ public class OZ extends PApplet {
 		if (updated) sendScreenUpdate();
 	}
 
+	/**
+	 * Send an update to the glasses.  The message is a json objects specifying
+	 * the background and foreground images to show.  It just uses the filename of each.
+	 * If no image is to be displayed, send an empty string.
+	 */
 	private void sendScreenUpdate() {
-		String bg = (screens.get(screenIndex) != null && !hide) ? screens.get(screenIndex).path : "";
-		String fg = (activeMenu != null && !hide) ? activeMenu.path : "";
+		String bg = (screens.get(screenIndex) != null && !hide) ? screens.get(screenIndex).getPath() : "";
+		String fg = (activeMenu != null && !hide) ? activeMenu.getPath() : "";
 
 		String msg = "{\"background\": \"" + bg + "\", \"foreground\": \"" + fg + "\"} \n";
 		sendMsg(msg);
@@ -176,6 +194,13 @@ public class OZ extends PApplet {
 	private Thread recThread            = null;
 	private DataInputStream streamIn	= null;
 
+	/**
+	 * Connect to the given ip address via a java socket.
+	 * 
+	 * TODO: not sure if the streamIn is needed here.
+	 * 
+	 * @param ip_address
+	 */
 	public void connect(String ip_address){
 		connected = false;
 		try {
@@ -193,7 +218,11 @@ public class OZ extends PApplet {
 		sendThread.start();
 	}
 
-	// sends bytes to output stream
+	/**
+	 * Sends bytes to connected glasses.
+	 * 
+	 * @param msg
+	 */
 	public void sendMsg(String msg){
 		if (connected) { // if system is connected
 			try {
@@ -209,24 +238,29 @@ public class OZ extends PApplet {
 		}
 	} 
 
-	// Forces the socket to disconnect
+	/**
+	 *  Forces the socket to disconnect
+	 */
 	public void disconnect(){
-		connected = false;
-
 		try {
 			if (socket!= null) socket.close();
 			if (streamOut != null) streamOut.close();
 			if (streamIn != null) streamIn.close();
+			connected = false;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}  
 
-	// thread sets up socket connection
+	/**
+	 * This sets up connection/send socket
+	 * 
+	 * @author Chris
+	 *
+	 */
 	class connectSocket implements Runnable {
 		@Override
 		public void run() {
-			//Log.v(TAG, "connectSocket_run");
 			SocketAddress socketAddress = new InetSocketAddress(ip, port);
 			try {               
 				socket.connect(socketAddress, 1000);
@@ -241,7 +275,9 @@ public class OZ extends PApplet {
 		}    
 	}
 
-	// thread receives messages
+	/**
+	 * Sets up the receive socket
+	 */
 	class receiveSocket implements Runnable {
 		@Override
 		public synchronized void run() {
