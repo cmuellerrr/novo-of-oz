@@ -52,7 +52,8 @@ public class OZ extends PApplet {
 		size(screenW, screenH);
 
 		setupScreens();
-		connect("192.168.1.101");
+		JSON json = JSON.load(dataPath("proto.json"));
+		connect(json.getString("ip"));
 		
 		//TODO this needs to wait until the connection is set up.
 		sendScreenUpdate();
@@ -202,6 +203,7 @@ public class OZ extends PApplet {
 	 * @param ip_address
 	 */
 	public void connect(String ip_address){
+		System.out.println("Connecting to " + ip_address);
 		connected = false;
 		try {
 			if (socket!= null) socket.close();
