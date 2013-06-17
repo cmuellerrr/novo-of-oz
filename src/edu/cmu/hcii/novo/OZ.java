@@ -14,6 +14,9 @@ import java.util.Map;
 
 import org.json.JSON;
 
+import ddf.minim.AudioSample;
+import ddf.minim.Minim;
+
 import processing.core.PApplet;
 
 /**
@@ -35,6 +38,8 @@ public class OZ extends PApplet {
 	int screenIndex;
 	Menu activeMenu;
 	boolean hide;
+	Minim minim;
+	AudioSample tone;
 
 	/**
 	 * Run the application.
@@ -54,6 +59,9 @@ public class OZ extends PApplet {
 		setupScreens();
 		JSON json = JSON.load(dataPath("proto.json"));
 		connect(json.getString("ip"));
+		
+		minim = new Minim(this);
+		tone = minim.loadSample("hai.aif");
 		
 		//TODO this needs to wait until the connection is set up.
 		sendScreenUpdate();
@@ -154,9 +162,21 @@ public class OZ extends PApplet {
 			}
 		}
 
-		if (updated) sendScreenUpdate();
+		//If updated, play a sound and send an update to the glasses.
+		if (updated) {
+			ohHai();
+			sendScreenUpdate();
+		}
 	}
 
+	/**
+	 * Notify the user that an input has been accepted.
+	 * Just play a beeping sound.
+	 */
+	private void ohHai() {
+		tone.trigger();
+	}
+	
 	/**
 	 * Send an update to the glasses.  The message is a json objects specifying
 	 * the background and foreground images to show.  It just uses the filename of each.
