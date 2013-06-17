@@ -8,3 +8,4 @@ Requires the following libraries:
 
 * [Processing 2.0](http://processing.org)
 * [json4processing] (https://github.com/agoransson/JSON-processing)
+* [minim 2.0.2] (http://code.compartmental.net/tools/minim/) This is one of processing's included libraries but you still have to link it.
