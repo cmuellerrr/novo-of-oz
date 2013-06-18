@@ -3,133 +3,96 @@
 	"menus": [
 		{
 			"key": '1',
-			"path": "Menu_Overview.png"
+			"paths": ["Screen_With_Nav_Tab_Open.png"]
 		},
 		{
 			"key": '2',
-			"path": "Menu_Reference.png"
+			"paths": ["Stowage_p1.png"],["Stowage_p2.png"],["Stowage_p3.png"],["Stowage_p4.png"]
 		},
-		{
-			"key": '5',
-			"path": "Menu_Stowage.png"
-		}
 	],
 	"screens": [
 		{
-			"path": "Experiment_Start.png",
+			"paths": ["Title_Slide.png"],
 			"menus": []
 		},
 		{
-			"path": "Objective.png",
+			"paths": ["Overview.png"],
 			"menus": []
 		},
 		{
-			"path": "Overview.png",
+			"paths": ["Execution_Notes.png"],
 			"menus": []
 		},
 		{
-			"path": "Stowage_Main.png",
+			"paths": ["Stowage_p1.png"],["Stowage_p2.png"],["Stowage_p3.png"],["Stowage_p4.png"],
 			"menus": []
 		},
 		{
-			"path": "Stowage_JEM.png",
+			"paths": ["step_1_1.png"],["step_1_1_p2.png"],["step_1_1_p3.png"],
 			"menus": []
 		},
 		{
-			"path": "Stowage_US_Lab.png",
+			"paths": ["step_1_2.png"],
 			"menus": []
 		},
 		{
-			"path": "Stowage_Columbus.png",
+			"paths": ["step_2_1.png"],
 			"menus": []
 		},
 		{
-			"path": "Step_1_1.png",
-			"menus": [{
-					"key": '4',
-					"path": "Step_1_1_Media.png"
-				}]
-		},
-		{
-			"path": "Step_1_2.png",
+			"paths": ["step_2_2.png"],["step_2_2_p2.png"],["step_2_2_p2_COL.png"],["step_2_2_p3.png"],
 			"menus": []
 		},
 		{
-			"path": "Step_2_1.png",
-			"menus": [{
-					"key": '3',
-					"path": "Step_2_x_Note.png"
-				}]
-		},
-		{
-			"path": "Step_2_2.png",
-			"menus": [{
-					"key": '3',
-					"path": "Step_2_x_Note.png"
-				},{
-					"key": '4',
-					"path": "Step_2_2_Media.png"
-				}]
-		},
-		{
-			"path": "Step_3_1.png",
+			"paths": ["step_3_1.png"],
 			"menus": []
 		},
 		{
-			"path": "Step_3_2.png",
+			"paths": ["step_3_2.png"],
 			"menus": []
 		},
 		{
-			"path": "Step_3_3.png",
+			"paths": ["step_3_3.png"],
 			"menus": []
 		},
 		{
-			"path": "Step_3_4.png",
+			"paths": ["step_3_4.png"],
 			"menus": []
 		},
 		{
-			"path": "Step_3_5.png",
-			"menus": [{
-					"key": '6',
-					"path": "Step_3_5_Input_Empty.png"
-				},{
-					"key": '7',
-					"path": "Step_3_5_Input_Filled.png"
-				},{
-					"key": '4',
-					"path": "Step_3_5_Media.png"
-				}]
-		},
-		{
-			"path": "Step_4.png",
+			"paths": ["step_3_5.png"],["step_3_5_p2.png"],["step_3_5_p3.png"],
 			"menus": []
 		},
 		{
-			"path": "Step_5_1.png",
+			"paths": ["step_4.png"],
 			"menus": []
 		},
 		{
-			"path": "Step_5_2.png",
+			"paths": ["Step_5_1.png"],
 			"menus": []
 		},
 		{
-			"path": "Step_5_3.png",
+			"paths": ["Step_5_2.png"],
 			"menus": []
 		},
 		{
-			"path": "Step_6.png",
+			"paths": ["Step_5_3.png"],
 			"menus": []
 		},
 		{
-			"path": "Step_7.png",
+			"paths": ["Step_6.png"],
 			"menus": []
 		},
 		{
-			"path": "Step_8.png",
+			"paths": ["Step_7.png"],
 			"menus": []
 		},
 		{
-			"path": "Step_9.png",
+			"paths": ["Step_8.png"],
+			"menus": []
+		},
+		{
+			"paths": ["Step_9.png"],
 			"menus": []
 		}
 	]
