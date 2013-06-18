@@ -1,6 +1,8 @@
 package edu.cmu.hcii.novo;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.json.JSON;
@@ -16,28 +18,47 @@ import processing.core.PImage;
  *
  */
 public class Screen {
-
-	  private String path;
-	  private PImage img;
+	
+	  private PApplet parent;
+	  private List<String> paths;
+	  private List<PImage> images;
+	  private int index;
 	  private Map<Character, Menu> menus;
 	  
 	  /**
 	   * Create a Screen object from the given json object.
-	   * The PApplet is only used to load the image here.
 	   * 
 	   * @param json
 	   * @param parent
 	   */
 	  Screen(JSON json, PApplet parent) {
-	    this.path = json.getString("path");
-	    this.img = parent.loadImage("images/" + path);
-	    this.menus = new HashMap<Character, Menu>();
+	    this.parent = parent;
+	    
+	    index = 0;
+	    paths = new ArrayList<String>();
+	    images = new ArrayList<PImage>();
+	    
+	    JSON jsonPaths = json.getArray("paths");
+	    for (int i = 0; i < jsonPaths.length(); i++) {
+	    	JSON curPath = jsonPaths.getJSON(i);
+	    	paths.add(curPath.toString());
+	    	images.add(parent.loadImage("image/" + curPath.toString()));
+	    }
+	    
+	    menus = new HashMap<Character, Menu>();
 	    
 	    JSON jsonMenus = json.getArray("menus");
 	    for (int i = 0; i < jsonMenus.length(); i++) {
-	      JSON curMenu = jsonMenus.getJSON(i);
-	      this.menus.put(curMenu.getString("key").charAt(0), new Menu(curMenu, parent));
+	        JSON curMenu = jsonMenus.getJSON(i);
+	        menus.put(curMenu.getString("key").charAt(0), new Menu(curMenu, parent));
 	    }
+	  }
+	  
+	  /**
+	   * Draw the current screen image.
+	   */
+	  public void draw() {
+		  parent.image(images.get(index), 0, 0, OZ.screenW, OZ.screenH);
 	  }
 	  
 	  /**
@@ -61,31 +82,31 @@ public class Screen {
 	    return menus.get(key); 
 	  }
 
-	/**
-	 * @return the path
-	 */
-	public String getPath() {
-		return path;
-	}
+	  /**
+	   * Scroll down the screen, so just increase the index.
+	   */
+	  public void scrollDown() {
+		  if (index < paths.size()-1) index++;
+	  }
+	  
+	  /**
+	   * Scroll up the screen, so just decrease the index.
+	   */
+	  public void scrollUp() {
+		  if (index > 0) index--;
+	  }
+	  
+	  /**
+	   * @return the path
+	   */
+	  public String getPath() {
+		return paths.get(index);
+	  }
 
-	/**
-	 * @param path the path to set
-	 */
-	public void setPath(String path) {
-		this.path = path;
-	}
-
-	/**
-	 * @return the img
-	 */
-	public PImage getImg() {
-		return img;
-	}
-
-	/**
-	 * @param img the img to set
-	 */
-	public void setImg(PImage img) {
-		this.img = img;
-	}	  
+	  /**
+	   * @return the img
+	   */
+	  public PImage getImage() {
+		  return images.get(index);
+	  }
 }

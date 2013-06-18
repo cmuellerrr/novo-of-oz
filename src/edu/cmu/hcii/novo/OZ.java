@@ -30,8 +30,8 @@ import processing.core.PApplet;
 @SuppressWarnings("serial")
 public class OZ extends PApplet {
 
-	int screenW = 640;
-	int screenH = 480;
+	public static int screenW = 640;
+	public static int screenH = 480;
 
 	List<Screen> screens;
 	Map<Character, Menu> menus;
@@ -74,8 +74,8 @@ public class OZ extends PApplet {
 	public void draw() {
 		rect(0, 0, width, height);
 		if (!hide) {
-			image(screens.get(screenIndex).getImg(), 0, 0, screenW, screenH);
-			if (activeMenu != null) image(activeMenu.getImg(), 0, 0, screenW, screenH);
+			screens.get(screenIndex).draw();
+			if (activeMenu != null) activeMenu.draw();
 		}
 	}
 	
@@ -135,7 +135,13 @@ public class OZ extends PApplet {
 				if (screenIndex < screens.size()-1) screenIndex++;
 				activeMenu = null;
 				updated = true;
-			} 
+			} else if (keyCode == UP) {
+				if (activeMenu == null) screens.get(screenIndex).scrollUp();
+				else activeMenu.scrollUp(); 
+			} else if (keyCode == DOWN) {
+				if (activeMenu == null) screens.get(screenIndex).scrollDown();
+				else activeMenu.scrollDown(); 
+			}
 		}
 
 		//Check if the active screen has a special menu
