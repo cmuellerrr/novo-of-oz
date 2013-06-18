@@ -16,15 +16,11 @@
 			"menus": []
 		},
 		{
-			"paths": ["Overview.png"],
+			"paths": ["MainStowage_p1.png","MainStowage_p2.png","MainStowage_p3.png"],
 			"menus": []
 		},
 		{
 			"paths": ["Execution_Notes.png"],
-			"menus": []
-		},
-		{
-			"paths": ["Stowage_p1.png","Stowage_p2.png","Stowage_p3.png"],
 			"menus": []
 		},
 		{
