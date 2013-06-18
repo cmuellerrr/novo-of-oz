@@ -7,7 +7,7 @@
 		},
 		{
 			"key": '2',
-			"paths": ["Stowage_p1.png"],["Stowage_p2.png"],["Stowage_p3.png"],["Stowage_p4.png"]
+			"paths": ["Stowage_p1.png","Stowage_p2.png","Stowage_p3.png","Stowage_p4.png"]
 		},
 	],
 	"screens": [
@@ -24,11 +24,11 @@
 			"menus": []
 		},
 		{
-			"paths": ["Stowage_p1.png"],["Stowage_p2.png"],["Stowage_p3.png"],["Stowage_p4.png"],
+			"paths": ["Stowage_p1.png","Stowage_p2.png","Stowage_p3.png","Stowage_p4.png"],
 			"menus": []
 		},
 		{
-			"paths": ["step_1_1.png"],["step_1_1_p2.png"],["step_1_1_p3.png"],
+			"paths": ["step_1_1.png","step_1_1_p2.png","step_1_1_p3.png"],
 			"menus": []
 		},
 		{
@@ -40,7 +40,7 @@
 			"menus": []
 		},
 		{
-			"paths": ["step_2_2.png"],["step_2_2_p2.png"],["step_2_2_p2_COL.png"],["step_2_2_p3.png"],
+			"paths": ["step_2_2.png","step_2_2_p2.png","step_2_2_p2_COL.png","step_2_2_p3.png"],
 			"menus": []
 		},
 		{
@@ -60,7 +60,7 @@
 			"menus": []
 		},
 		{
-			"paths": ["step_3_5.png"],["step_3_5_p2.png"],["step_3_5_p3.png"],
+			"paths": ["step_3_5.png","step_3_5_p2.png","step_3_5_p3.png"],
 			"menus": []
 		},
 		{
