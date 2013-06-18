@@ -23,7 +23,7 @@ public class Screen {
 	  private List<String> paths;
 	  private List<PImage> images;
 	  private int index;
-	  private Map<Character, Menu> menus;
+	  private Map<Character, Screen> menus;
 	  
 	  /**
 	   * Create a Screen object from the given json object.
@@ -45,12 +45,15 @@ public class Screen {
 	    	images.add(parent.loadImage("images/" + curPath));
 	    }
 	    
-	    menus = new HashMap<Character, Menu>();
-	    
-	    JSON jsonMenus = json.getArray("menus");
-	    for (int i = 0; i < jsonMenus.length(); i++) {
-	        JSON curMenu = jsonMenus.getJSON(i);
-	        menus.put(curMenu.getString("key").charAt(0), new Menu(curMenu, parent));
+	    try {
+		    menus = new HashMap<Character, Screen>();	    
+		    JSON jsonMenus = json.getArray("menus");
+		    for (int i = 0; i < jsonMenus.length(); i++) {
+		        JSON curMenu = jsonMenus.getJSON(i);
+		        menus.put(curMenu.getString("key").charAt(0), new Screen(curMenu, parent));
+		    }
+	    } catch (RuntimeException e) {
+	    	System.out.println("No menus specified on this screen.");
 	    }
 	  }
 	  
@@ -78,7 +81,7 @@ public class Screen {
 	   * @param key
 	   * @return
 	   */
-	  public Menu getMenu(char key) {
+	  public Screen getMenu(char key) {
 	    return menus.get(key); 
 	  }
 

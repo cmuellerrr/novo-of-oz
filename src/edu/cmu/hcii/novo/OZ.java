@@ -34,9 +34,9 @@ public class OZ extends PApplet {
 	public static int screenH = 480;
 
 	List<Screen> screens;
-	Map<Character, Menu> menus;
+	Map<Character, Screen> menus;
 	int screenIndex;
-	Menu activeMenu;
+	Screen activeMenu;
 	boolean hide;
 	Minim minim;
 	AudioSample tone;
@@ -94,7 +94,7 @@ public class OZ extends PApplet {
 	 */
 	private void setupScreens() {
 		screens = new ArrayList<Screen>();
-		menus = new HashMap<Character, Menu>();
+		menus = new HashMap<Character, Screen>();
 
 		JSON json = JSON.load(dataPath("proto.json"));
 
@@ -103,7 +103,7 @@ public class OZ extends PApplet {
 		for (int i = 0; i < jsonMenus.length(); i++) {
 			JSON curMenu = jsonMenus.getJSON(i);
 			//setup a map describing how special keys affect an individual screen.
-			menus.put(curMenu.getString("key").charAt(0), new Menu(curMenu, this));
+			menus.put(curMenu.getString("key").charAt(0), new Screen(curMenu, this));
 		}
 
 		//load the screens
