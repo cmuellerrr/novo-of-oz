@@ -32,6 +32,7 @@ public class OZ extends PApplet {
 
 	public static int screenW = 640;
 	public static int screenH = 480;
+	private static final int numRetries = 3;
 
 	List<Screen> screens;
 	Map<Character, Screen> menus;
@@ -66,7 +67,7 @@ public class OZ extends PApplet {
 		tone = minim.loadSample("hai.aif");
 		
 		//TODO this needs to wait until the connection is set up.
-		sendScreenUpdate();
+		//sendScreenUpdate();
 	}
 
 	/**
@@ -121,6 +122,7 @@ public class OZ extends PApplet {
 	public void keyPressed() {
 		boolean updated = false;
 
+		//Check for arrow key movement
 		if (key == CODED) {
 			if (keyCode == LEFT) {
 				if (screenIndex > 0) screenIndex--;
@@ -229,7 +231,7 @@ public class OZ extends PApplet {
 	// socket
 	private Socket socket;
 	private String ip;
-	private final int port = 5556;
+	private final int port = 5555;
 	private boolean connected = false; 		// is connected or not
 
 	// connect/send thread
@@ -250,7 +252,7 @@ public class OZ extends PApplet {
 	 * @param ip_address
 	 */
 	public void connect(String ip_address){
-		System.out.println("Connecting to " + ip_address);
+		System.out.println("Connecting socket to " + ip_address);
 		connected = false;
 		try {
 			if (socket != null) socket.close();
@@ -291,6 +293,7 @@ public class OZ extends PApplet {
 	 *  Forces the socket to disconnect
 	 */
 	public void disconnect(){
+		System.out.println("Disconnecting socket");
 		try {
 			if (socket != null) socket.close();
 			if (streamOut != null) streamOut.close();
@@ -300,7 +303,7 @@ public class OZ extends PApplet {
 			e.printStackTrace();
 		}
 	}  
-
+	
 	/**
 	 * This sets up connection/send socket
 	 * 
@@ -311,17 +314,40 @@ public class OZ extends PApplet {
 		@Override
 		public void run() {
 			SocketAddress socketAddress = new InetSocketAddress(ip, port);
-			try {               
-				socket.connect(socketAddress, 1000);
-				streamOut = new DataOutputStream(new BufferedOutputStream(socket.getOutputStream()));
-                recRunnable = new receiveSocket();
-                recThread = new Thread(recRunnable);
-                recThread.start();
-			} catch (IOException e) {
-				disconnect();
-				e.printStackTrace();
+			
+			//Try to connect 3 times.
+			int tries = 0;
+			while(tries < numRetries) {				
+				try {
+					System.out.println("Attempting connection " + (tries+1));
+					socket = new Socket();
+					socket.connect(socketAddress, 3000);
+					streamOut = new DataOutputStream(new BufferedOutputStream(socket.getOutputStream()));
+	                recRunnable = new receiveSocket();
+	                recThread = new Thread(recRunnable);
+	                recThread.start();
+	                break;
+				} catch (IOException e) {
+					e.printStackTrace();
+					disconnect();
+				}
+				
+				tries++;
+				
+				//Wait a bit before connecting again.
+				try {
+					Thread.sleep(1000);
+				} catch (Exception e) {
+					System.out.println("Error trying to sleep");
+				}
 			}
-		}    
+			
+			//If it wasn't able to connect, just stop the program.
+			if (tries == numRetries && !socket.isConnected()) {
+				System.out.println("Failed to connect to client.  Shutting down.");
+				exit();
+			}
+		}
 	}
 
 	/**

@@ -53,7 +53,7 @@ public class Screen {
 		        menus.put(curMenu.getString("key").charAt(0), new Screen(curMenu, parent));
 		    }
 	    } catch (RuntimeException e) {
-	    	System.out.println("No menus specified on this screen.");
+	    	System.out.println("No menus specified on screen: " + paths.toString());
 	    }
 	  }
 	  
