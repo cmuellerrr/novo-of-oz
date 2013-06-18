@@ -7,7 +7,7 @@
 		},
 		{
 			"key": '2',
-			"paths": ["Stowage_p1.png","Stowage_p2.png","Stowage_p3.png","Stowage_p4.png"]
+			"paths": ["Stowage_p1.png","Stowage_p2.png","Stowage_p3.png"]
 		},
 	],
 	"screens": [
@@ -24,7 +24,7 @@
 			"menus": []
 		},
 		{
-			"paths": ["Stowage_p1.png","Stowage_p2.png","Stowage_p3.png","Stowage_p4.png"],
+			"paths": ["Stowage_p1.png","Stowage_p2.png","Stowage_p3.png"],
 			"menus": []
 		},
 		{

@@ -40,9 +40,9 @@ public class Menu {
 		
 		JSON jsonPaths = json.getArray("paths");
 	    for (int i = 0; i < jsonPaths.length(); i++) {
-	    	JSON curPath = jsonPaths.getJSON(i);
-	    	paths.add(curPath.toString());
-	    	images.add(parent.loadImage("image/" + curPath.toString()));
+	    	String curPath = jsonPaths.getString(i);
+	    	paths.add(curPath);
+	    	images.add(parent.loadImage("images/" + curPath));
 	    }
 	}
 	
