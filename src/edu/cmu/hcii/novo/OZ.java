@@ -136,11 +136,9 @@ public class OZ extends PApplet {
 				activeMenu = null;
 				updated = true;
 			} else if (keyCode == UP) {
-				if (activeMenu == null) screens.get(screenIndex).scrollUp();
-				else activeMenu.scrollUp(); 
+				updated = activeMenu == null ? screens.get(screenIndex).scrollUp() : activeMenu.scrollUp();
 			} else if (keyCode == DOWN) {
-				if (activeMenu == null) screens.get(screenIndex).scrollDown();
-				else activeMenu.scrollDown(); 
+				updated = activeMenu == null ? screens.get(screenIndex).scrollDown() : activeMenu.scrollDown();
 			}
 		}
 

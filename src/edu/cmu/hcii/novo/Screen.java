@@ -85,15 +85,23 @@ public class Screen {
 	  /**
 	   * Scroll down the screen, so just increase the index.
 	   */
-	  public void scrollDown() {
-		  if (index < paths.size()-1) index++;
+	  public boolean scrollDown() {
+		  if (index < paths.size()-1) {
+			  index++;
+			  return true;
+		  }
+		  return false;
 	  }
 	  
 	  /**
 	   * Scroll up the screen, so just decrease the index.
 	   */
-	  public void scrollUp() {
-		  if (index > 0) index--;
+	  public boolean scrollUp() {
+		  if (index > 0) {
+			  index--;
+			  return true;
+		  }
+		  return false;
 	  }
 	  
 	  /**
