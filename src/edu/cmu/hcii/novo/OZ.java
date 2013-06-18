@@ -25,7 +25,7 @@ import processing.core.PApplet;
  * to the glasses which trigger changes.
  * 
  * @author Chris
- *
+ * 
  */
 @SuppressWarnings("serial")
 public class OZ extends PApplet {
@@ -206,7 +206,7 @@ public class OZ extends PApplet {
 	// socket
 	private Socket socket;
 	private String ip;
-	private final int port = 5555;
+	private final int port = 5556;
 	private boolean connected = false; 		// is connected or not
 
 	// connect/send thread
