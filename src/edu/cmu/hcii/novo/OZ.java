@@ -54,8 +54,10 @@ public class OZ extends PApplet {
 	 * Grab the screens and connect to the glasses.
 	 */
 	public void setup() {
+		prepareExitHandler();
+		
 		size(screenW, screenH);
-
+		
 		setupScreens();
 		JSON json = JSON.load(dataPath("proto.json"));
 		connect(json.getString("ip"));
@@ -77,13 +79,6 @@ public class OZ extends PApplet {
 			screens.get(screenIndex).draw();
 			if (activeMenu != null) activeMenu.draw();
 		}
-	}
-	
-	/**
-	 * On exit, disconnect the socket from the glasses.
-	 */
-	public void exit() {
-		disconnect();
 	}
 
 	/**
@@ -182,6 +177,16 @@ public class OZ extends PApplet {
 	}
 	
 	/**
+	 * On exit, disconnect the socket from the glasses.
+	 */
+	public void stop() {
+		System.out.println("Stopping application.");
+		tone.close();
+		minim.stop();
+		disconnect();
+	}
+	
+	/**
 	 * Send an update to the glasses.  The message is a json objects specifying
 	 * the background and foreground images to show.  It just uses the filename of each.
 	 * If no image is to be displayed, send an empty string.
@@ -192,6 +197,24 @@ public class OZ extends PApplet {
 
 		String msg = "{\"background\": \"" + bg + "\", \"foreground\": \"" + fg + "\"} \n";
 		sendMsg(msg);
+	}
+	
+	/**
+	 * Setup an exit handler.  This is what handles the shutdown of the application and 
+	 * cleans up all sockets/audio channels/etc.
+	 */
+	private void prepareExitHandler() {
+		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+			public void run () {
+				//System.out.println("SHUTDOWN HOOK");
+				try {
+					stop();
+				} catch (Exception ex){
+					ex.printStackTrace(); // not much else to do at this point
+				}
+							
+			}
+		}));
 	}
 
 
@@ -230,7 +253,7 @@ public class OZ extends PApplet {
 		System.out.println("Connecting to " + ip_address);
 		connected = false;
 		try {
-			if (socket!= null) socket.close();
+			if (socket != null) socket.close();
 			if (streamOut != null) streamOut.close();
 			if (streamIn != null) streamIn.close();
 		} catch (IOException e) {
@@ -269,7 +292,7 @@ public class OZ extends PApplet {
 	 */
 	public void disconnect(){
 		try {
-			if (socket!= null) socket.close();
+			if (socket != null) socket.close();
 			if (streamOut != null) streamOut.close();
 			if (streamIn != null) streamIn.close();
 			connected = false;
