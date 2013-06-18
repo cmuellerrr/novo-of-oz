@@ -289,7 +289,7 @@ public class OZ extends PApplet {
 		public void run() {
 			SocketAddress socketAddress = new InetSocketAddress(ip, port);
 			try {               
-				socket.connect(socketAddress, 1000);
+				socket.connect(socketAddress, 5000);
 				streamOut = new DataOutputStream(new BufferedOutputStream(socket.getOutputStream()));
                 recRunnable = new receiveSocket();
                 recThread = new Thread(recRunnable);
