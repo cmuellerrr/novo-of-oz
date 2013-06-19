@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
 	"ip": "192.168.1.102",
 	"menus": [
@@ -135,4 +136,100 @@
 			"menus": []
 		}
 	]
+=======
+{
+	"ip": "192.168.1.102",
+	"menus": [
+		{
+			"key": '1',
+			"paths": ["Screen_With_Nav_Tab_Open.png"]
+		},
+		{
+			"key": '2',
+			"paths": ["Stowage_p1.png","Stowage_p2.png","Stowage_p3.png"]
+		},
+	],
+	"screens": [
+		{
+			"paths": ["Title_Slide.png"],
+			"menus": []
+		},
+		{
+			"paths": ["MainStowage_p1.png","MainStowage_p2.png","MainStowage_p3.png"],
+			"menus": []
+		},
+		{
+			"paths": ["Execution_Notes.png"],
+			"menus": []
+		},
+		{
+			"paths": ["step_1_1.png","step_1_1_p2.png","step_1_1_p3.png"],
+			"menus": []
+		},
+		{
+			"paths": ["step_1_2.png"],
+			"menus": []
+		},
+		{
+			"paths": ["step_2_1.png"],
+			"menus": []
+		},
+		{
+			"paths": ["step_2_2.png","step_2_2_p2.png","step_2_2_p2_COL.png","step_2_2_p3.png"],
+			"menus": []
+		},
+		{
+			"paths": ["step_3_1.png"],
+			"menus": []
+		},
+		{
+			"paths": ["step_3_2.png"],
+			"menus": []
+		},
+		{
+			"paths": ["step_3_3.png"],
+			"menus": []
+		},
+		{
+			"paths": ["step_3_4.png"],
+			"menus": []
+		},
+		{
+			"paths": ["step_3_5.png","step_3_5_p2.png","step_3_5_p4.png","step_3_5_p3.png"],
+			"menus": []
+		},
+		{
+			"paths": ["step_4.png"],
+			"menus": []
+		},
+		{
+			"paths": ["Step_5_1.png"],
+			"menus": []
+		},
+		{
+			"paths": ["Step_5_2.png"],
+			"menus": []
+		},
+		{
+			"paths": ["Step_5_3.png"],
+			"menus": []
+		},
+		{
+			"paths": ["Step_6.png"],
+			"menus": []
+		},
+		{
+			"paths": ["Step_7.png"],
+			"menus": []
+		},
+		{
+			"paths": ["Step_8.png"],
+			"menus": []
+		},
+		{
+			"paths": ["Step_9.png"],
+			"menus": []
+		}
+	]
+>>>>>>> 9ad4b5dc754ff3fd8abef13674c6c65fc9335eed
 }
