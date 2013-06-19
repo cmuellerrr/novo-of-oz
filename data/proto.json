@@ -3,24 +3,67 @@
 	"menus": [
 		{
 			"key": '1',
-			"paths": ["Screen_With_Nav_Tab_Open.png"]
+			{
+				"paths": ["navigate_tab_open.png"],
+				"menus": [
+					{
+					"key": '1',
+					"path": "step_1_1.png"
+					},
+					{
+					"key": '2',
+					"path": "step_2_1.png"
+					},
+					{
+					"key": '3',
+					"path": "step_3_1.png"
+					},
+					{
+					"key": '4',
+					"path": "step_4.png"
+					},
+					{
+					"key": '5',
+					"path": "step_5_1.png"
+					},
+					{
+					"key": '6',
+					"path": "step_6.png"
+					},
+					{
+					"key": '7',
+					"path": "step_7.png"
+					},
+					{
+					"key": '8',
+					"path": "step_8.png"
+					},
+					{
+					"key": '9',
+					"path": "step_9.png"
+					},
+				]
+			}
 		},
 		{
 			"key": '2',
-			"paths": ["Stowage_p1.png","Stowage_p2.png","Stowage_p3.png"]
+			{
+			"paths": ["stowage_tab_open_p1.png","stowage_tab_open_p2.png"],
+			"menus": []
+			}
 		},
 	],
 	"screens": [
 		{
-			"paths": ["Title_Slide.png"],
+			"paths": ["title_slide.png"],
 			"menus": []
 		},
 		{
-			"paths": ["MainStowage_p1.png","MainStowage_p2.png","MainStowage_p3.png"],
+			"paths": ["stowage_jem.png","stowage_usl","stowage_col.png"],
 			"menus": []
 		},
 		{
-			"paths": ["Execution_Notes.png"],
+			"paths": ["execution_notes.png"],
 			"menus": []
 		},
 		{
@@ -36,7 +79,7 @@
 			"menus": []
 		},
 		{
-			"paths": ["step_2_2.png","step_2_2_p2.png","step_2_2_p2_COL.png","step_2_2_p3.png"],
+			"paths": ["step_2_2.png","step_2_2_p2.png"],
 			"menus": []
 		},
 		{
@@ -56,7 +99,7 @@
 			"menus": []
 		},
 		{
-			"paths": ["step_3_5.png","step_3_5_p2.png","step_3_5_p4.png","step_3_5_p3.png"],
+			"paths": ["step_3_5.png","step_3_5_p2.png","step_3_5_p3.png","step_3_5_p4.png"],
 			"menus": []
 		},
 		{
@@ -64,31 +107,31 @@
 			"menus": []
 		},
 		{
-			"paths": ["Step_5_1.png"],
+			"paths": ["step_5_1.png"],
 			"menus": []
 		},
 		{
-			"paths": ["Step_5_2.png"],
+			"paths": ["step_5_2.png"],
 			"menus": []
 		},
 		{
-			"paths": ["Step_5_3.png"],
+			"paths": ["step_5_3.png"],
 			"menus": []
 		},
 		{
-			"paths": ["Step_6.png"],
+			"paths": ["step_6.png"],
 			"menus": []
 		},
 		{
-			"paths": ["Step_7.png"],
+			"paths": ["step_7.png"],
 			"menus": []
 		},
 		{
-			"paths": ["Step_8.png"],
+			"paths": ["step_8.png"],
 			"menus": []
 		},
 		{
-			"paths": ["Step_9.png"],
+			"paths": ["step_9.png"],
 			"menus": []
 		}
 	]
