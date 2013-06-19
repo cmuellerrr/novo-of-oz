@@ -1,375 +1,134 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 {
 	"ip": "192.168.1.102",
 	"menus": [
 		{
 			"key": '1',
-			{
-				"paths": ["navigate_tab_open.png"],
-				"menus": [
-					{
-					"key": '1',
-					"path": "step_1_1.png"
-					},
-					{
-					"key": '2',
-					"path": "step_2_1.png"
-					},
-					{
-					"key": '3',
-					"path": "step_3_1.png"
-					},
-					{
-					"key": '4',
-					"path": "step_4.png"
-					},
-					{
-					"key": '5',
-					"path": "step_5_1.png"
-					},
-					{
-					"key": '6',
-					"path": "step_6.png"
-					},
-					{
-					"key": '7',
-					"path": "step_7.png"
-					},
-					{
-					"key": '8',
-					"path": "step_8.png"
-					},
-					{
-					"key": '9',
-					"path": "step_9.png"
-					},
-				]
-			}
+			"paths": ["navigate_tab_open.png"],
+			"quickJumps": [
+				{
+				"key": '1',
+				"paths": "step_1_1.png"
+				},
+				{
+				"key": '2',
+				"paths": "step_2_1.png"
+				},
+				{
+				"key": '3',
+				"paths": "step_3_1.png"
+				},
+				{
+				"key": '4',
+				"paths": "step_4.png"
+				},
+				{
+				"key": '5',
+				"paths": "step_5_1.png"
+				},
+				{
+				"key": '6',
+				"paths": "step_6.png"
+				},
+				{
+				"key": '7',
+				"paths": "step_7.png"
+				},
+				{
+				"key": '8',
+				"paths": "step_8.png"
+				},
+				{
+				"key": '9',
+				"paths": "step_9.png"
+				}
+			]
 		},
 		{
 			"key": '2',
-			{
 			"paths": ["stowage_tab_open_p1.png","stowage_tab_open_p2.png"],
-			"menus": []
-			}
-		},
+            "quickJumps": []
+		}
 	],
 	"screens": [
 		{
 			"paths": ["title_slide.png"],
-			"menus": []
+			"subScreens": []
 		},
 		{
-			"paths": ["stowage_jem.png","stowage_usl","stowage_col.png"],
-			"menus": []
-		},
-		{
-			"paths": ["execution_notes.png"],
-			"menus": []
-		},
-		{
-			"paths": ["step_1_1.png","step_1_1_p2.png","step_1_1_p3.png"],
-			"menus": []
-		},
-		{
-			"paths": ["step_1_2.png"],
-			"menus": []
-		},
-		{
-			"paths": ["step_2_1.png"],
-			"menus": []
-		},
-		{
-			"paths": ["step_2_2.png","step_2_2_p2.png"],
-			"menus": []
-		},
-		{
-			"paths": ["step_3_1.png"],
-			"menus": []
-		},
-		{
-			"paths": ["step_3_2.png"],
-			"menus": []
-		},
-		{
-			"paths": ["step_3_3.png"],
-			"menus": []
-		},
-		{
-			"paths": ["step_3_4.png"],
-			"menus": []
-		},
-		{
-			"paths": ["step_3_5.png","step_3_5_p2.png","step_3_5_p3.png","step_3_5_p4.png"],
-			"menus": []
-		},
-		{
-			"paths": ["step_4.png"],
-			"menus": []
-		},
-		{
-			"paths": ["step_5_1.png"],
-			"menus": []
-		},
-		{
-			"paths": ["step_5_2.png"],
-			"menus": []
-		},
-		{
-			"paths": ["step_5_3.png"],
-			"menus": []
-		},
-		{
-			"paths": ["step_6.png"],
-			"menus": []
-		},
-		{
-			"paths": ["step_7.png"],
-			"menus": []
-		},
-		{
-			"paths": ["step_8.png"],
-			"menus": []
-		},
-		{
-			"paths": ["step_9.png"],
-			"menus": []
-		}
-	]
-=======
-{
-	"ip": "192.168.1.102",
-	"menus": [
-		{
-			"key": '1',
-			{
-				"paths": ["navigate_tab_open.png"],
-				"menus": [
-					{
-					"key": '1',
-					"path": "step_1_1.png"
-					},
-					{
-					"key": '2',
-					"path": "step_2_1.png"
-					},
-					{
-					"key": '3',
-					"path": "step_3_1.png"
-					},
-					{
-					"key": '4',
-					"path": "step_4.png"
-					},
-					{
-					"key": '5',
-					"path": "step_5_1.png"
-					},
-					{
-					"key": '6',
-					"path": "step_6.png"
-					},
-					{
-					"key": '7',
-					"path": "step_7.png"
-					},
-					{
-					"key": '8',
-					"path": "step_8.png"
-					},
-					{
-					"key": '9',
-					"path": "step_9.png"
-					},
-				]
-			}
-		},
-		{
-			"key": '2',
-			{
-			"paths": ["stowage_tab_open_p1.png","stowage_tab_open_p2.png"],
-			"menus": []
-			}
-		},
-	],
-	"screens": [
-		{
-			"paths": ["title_slide.png"],
-			"menus": []
-		},
-		{
-			"paths": ["stowage_jem.png","stowage_usl","stowage_col.png"],
-			"menus": []
+			"paths": ["stowage_jem.png","stowage_usl.png","stowage_col.png"],
+			"subScreens": []
 		},
 		{
 			"paths": ["execution_notes.png"],
-			"menus": []
+			"subScreens": []
 		},
 		{
 			"paths": ["step_1_1.png","step_1_1_p2.png","step_1_1_p3.png"],
-			"menus": []
+			"subScreens": []
 		},
 		{
 			"paths": ["step_1_2.png"],
-			"menus": []
+			"subScreens": []
 		},
 		{
 			"paths": ["step_2_1.png"],
-			"menus": []
+			"subScreens": []
 		},
 		{
 			"paths": ["step_2_2.png","step_2_2_p2.png"],
-			"menus": []
+			"subScreens": []
 		},
 		{
 			"paths": ["step_3_1.png"],
-			"menus": []
+			"subScreens": []
 		},
 		{
 			"paths": ["step_3_2.png"],
-			"menus": []
+			"subScreens": []
 		},
 		{
 			"paths": ["step_3_3.png"],
-			"menus": []
+			"subScreens": []
 		},
 		{
 			"paths": ["step_3_4.png"],
-			"menus": []
+			"subScreens": []
 		},
 		{
 			"paths": ["step_3_5.png","step_3_5_p2.png","step_3_5_p3.png","step_3_5_p4.png"],
-			"menus": []
+			"subScreens": []
 		},
 		{
 			"paths": ["step_4.png"],
-			"menus": []
+			"subScreens": []
 		},
 		{
 			"paths": ["step_5_1.png"],
-			"menus": []
+			"subScreens": []
 		},
 		{
 			"paths": ["step_5_2.png"],
-			"menus": []
+			"subScreens": []
 		},
 		{
 			"paths": ["step_5_3.png"],
-			"menus": []
+			"subScreens": []
 		},
 		{
 			"paths": ["step_6.png"],
-			"menus": []
+			"subScreens": []
 		},
 		{
 			"paths": ["step_7.png"],
-			"menus": []
+			"subScreens": []
 		},
 		{
 			"paths": ["step_8.png"],
-			"menus": []
+			"subScreens": []
 		},
 		{
 			"paths": ["step_9.png"],
-			"menus": []
+			"subScreens": []
 		}
 	]
->>>>>>> refs/remotes/origin/master
-=======
-{
-	"ip": "192.168.1.102",
-	"menus": [
-		{
-			"key": '1',
-			"paths": ["Screen_With_Nav_Tab_Open.png"]
-		},
-		{
-			"key": '2',
-			"paths": ["Stowage_p1.png","Stowage_p2.png","Stowage_p3.png"]
-		},
-	],
-	"screens": [
-		{
-			"paths": ["Title_Slide.png"],
-			"menus": []
-		},
-		{
-			"paths": ["MainStowage_p1.png","MainStowage_p2.png","MainStowage_p3.png"],
-			"menus": []
-		},
-		{
-			"paths": ["Execution_Notes.png"],
-			"menus": []
-		},
-		{
-			"paths": ["step_1_1.png","step_1_1_p2.png","step_1_1_p3.png"],
-			"menus": []
-		},
-		{
-			"paths": ["step_1_2.png"],
-			"menus": []
-		},
-		{
-			"paths": ["step_2_1.png"],
-			"menus": []
-		},
-		{
-			"paths": ["step_2_2.png","step_2_2_p2.png","step_2_2_p2_COL.png","step_2_2_p3.png"],
-			"menus": []
-		},
-		{
-			"paths": ["step_3_1.png"],
-			"menus": []
-		},
-		{
-			"paths": ["step_3_2.png"],
-			"menus": []
-		},
-		{
-			"paths": ["step_3_3.png"],
-			"menus": []
-		},
-		{
-			"paths": ["step_3_4.png"],
-			"menus": []
-		},
-		{
-			"paths": ["step_3_5.png","step_3_5_p2.png","step_3_5_p4.png","step_3_5_p3.png"],
-			"menus": []
-		},
-		{
-			"paths": ["step_4.png"],
-			"menus": []
-		},
-		{
-			"paths": ["Step_5_1.png"],
-			"menus": []
-		},
-		{
-			"paths": ["Step_5_2.png"],
-			"menus": []
-		},
-		{
-			"paths": ["Step_5_3.png"],
-			"menus": []
-		},
-		{
-			"paths": ["Step_6.png"],
-			"menus": []
-		},
-		{
-			"paths": ["Step_7.png"],
-			"menus": []
-		},
-		{
-			"paths": ["Step_8.png"],
-			"menus": []
-		},
-		{
-			"paths": ["Step_9.png"],
-			"menus": []
-		}
-	]
->>>>>>> 9ad4b5dc754ff3fd8abef13674c6c65fc9335eed
 }
