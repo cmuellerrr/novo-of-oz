@@ -2,7 +2,7 @@
 	"ip": "192.168.1.111",
 	"menus": [
 		{
-			"key": '1',
+			"key": 'n',
 			"paths": ["navigate_tab_open.png"],
 			"quickJumps": [
 				{
