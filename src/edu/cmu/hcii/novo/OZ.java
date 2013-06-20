@@ -37,6 +37,7 @@ public class OZ extends PApplet {
 	List<Screen> screens;
 	Map<Character, Screen> menus;
 	Map<Character, String> quickJumps;
+	String navigationMenuPath;
 	int screenIndex;
 	Screen activeMenu;
 	boolean hide;
@@ -92,6 +93,7 @@ public class OZ extends PApplet {
 	private void setupScreens() {
 		screens = new ArrayList<Screen>();
 		menus = new HashMap<Character, Screen>();
+		quickJumps = new HashMap<Character, String>();
 
 		try {	
 			JSON json = JSON.load(dataPath("proto.json"));
@@ -104,12 +106,17 @@ public class OZ extends PApplet {
 				menus.put(curMenu.getString("key").charAt(0), new Screen(curMenu, this));
 				
 				//load the quick jumps
-				//try {
-				//	JSON jumps = curMenu.getArray("quickJumps");
-			//		
-				//} catch (RuntimeException e) {
-				//	
-				//}
+				try {
+					JSON jumps = curMenu.getArray("quickJumps");
+					for (int j = 0; j < jumps.length(); j++) {
+						JSON curJump = jumps.getJSON(j);
+						quickJumps.put(curJump.getString("key").charAt(0), curJump.getString("path"));
+					}
+					//TODO ew...
+					navigationMenuPath = menus.get(curMenu.getString("key").charAt(0)).getOriginalPath();
+				} catch (RuntimeException e) {
+					//it didn't have the quick jumps
+				}
 			}
 			
 	
@@ -162,28 +169,30 @@ public class OZ extends PApplet {
 				updated = activeMenu == null ? activeScreen.scrollDown() : activeMenu.scrollDown();
 			}
 		}
-		
-		//if there is a menu
-		//	if its the same menu, dismiss
-		//	check for key presses on it
-		//	then check for global menu key presses
-		//if there isn't a menu
-		//	check for key presses on the screen
-		//else
-		//	check for global key presses
 
-		//Check if the active menu has a special subscreen
+		//Check if the active menu has a special sub screen
 		if (activeMenu != null) {
-			//if it has a special subscreen
+			//if it has a special sub screen
 			if (activeMenu.handleKeyPressed(key)) {
 				updated = true;
+			//if the active menu is the navigation menu, handle any quick jumps
+			} else if (quickJumps.containsKey(key) && activeMenu.getOriginalPath() == navigationMenuPath) {
+				int newIndex =  getScreenIndex(quickJumps.get(key));
+				if (newIndex >= 0) {
+					screenIndex = newIndex;
+					activeMenu.leaveScreen();
+					activeMenu = null;
+					updated = true;
+				} else {
+					System.out.println("Couldn't find the screen to jump to using: " + key);
+				}
 			//if its the same command that brought it up, dismiss
 			} else if (activeMenu == menus.get(key)) {
 				activeMenu.leaveScreen();
 				activeMenu = null;
 				updated = true;
 			}
-		//Check if the active screen has a special subscreen
+		//Check if the active screen has a special sub screen
 		} else if (activeScreen.handleKeyPressed(key)) {
 			updated = true;
 		//Check for global menus
@@ -222,6 +231,21 @@ public class OZ extends PApplet {
 		tone.close();
 		minim.stop();
 		disconnect();
+	}
+	
+	/**
+	 * Get the index of the screen with the given path.
+	 * 
+	 * @param path
+	 * @return
+	 */
+	private int getScreenIndex(String path) {
+		if (path != null) {
+			for (int i = 0; i < screens.size(); i++) {
+				if (path.equals(screens.get(i).getOriginalPath())) return i;
+			}
+		}
+		return -1;
 	}
 	
 	/**
@@ -378,10 +402,12 @@ public class OZ extends PApplet {
 				}
 			}
 			
-			//If it wasn't able to connect, just stop the program.
+			//If it wasn't able to connect.
 			if (tries == numRetries && !socket.isConnected()) {
-				System.out.println("Failed to connect to client.  Shutting down.");
-				exit();
+				System.out.println("Failed to connect to client.");
+				//exit();
+			} else if (socket.isConnected()) {
+				System.out.println("Connected to client");
 			}
 		}
 	}

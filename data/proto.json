@@ -7,39 +7,39 @@
 			"quickJumps": [
 				{
 				"key": '1',
-				"paths": "step_1_1.png"
+				"path": "step_1_1.png"
 				},
 				{
 				"key": '2',
-				"paths": "step_2_1.png"
+				"path": "step_2_1.png"
 				},
 				{
 				"key": '3',
-				"paths": "step_3_1.png"
+				"path": "step_3_1.png"
 				},
 				{
 				"key": '4',
-				"paths": "step_4.png"
+				"path": "step_4.png"
 				},
 				{
 				"key": '5',
-				"paths": "step_5_1.png"
+				"path": "step_5_1.png"
 				},
 				{
 				"key": '6',
-				"paths": "step_6.png"
+				"path": "step_6.png"
 				},
 				{
 				"key": '7',
-				"paths": "step_7.png"
+				"path": "step_7.png"
 				},
 				{
 				"key": '8',
-				"paths": "step_8.png"
+				"path": "step_8.png"
 				},
 				{
 				"key": '9',
-				"paths": "step_9.png"
+				"path": "step_9.png"
 				}
 			]
 		},

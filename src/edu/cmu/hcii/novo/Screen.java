@@ -134,6 +134,14 @@ public class Screen {
 			  return paths.get(index);
 		  }
 	  }
+	  
+	  /**
+	   * Return the head of the paths list.  Used for quick jumps.
+	   * @return
+	   */
+	  public String getOriginalPath() {
+		  return paths.get(0);
+	  }
 
 	  /**
 	   * @return the img
