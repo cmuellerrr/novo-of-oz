@@ -36,6 +36,7 @@ public class OZ extends PApplet {
 
 	List<Screen> screens;
 	Map<Character, Screen> menus;
+	Map<Character, String> quickJumps;
 	int screenIndex;
 	Screen activeMenu;
 	boolean hide;
@@ -101,7 +102,16 @@ public class OZ extends PApplet {
 				JSON curMenu = jsonMenus.getJSON(i);
 				//setup a map describing how special keys affect an individual screen.
 				menus.put(curMenu.getString("key").charAt(0), new Screen(curMenu, this));
+				
+				//load the quick jumps
+				//try {
+				//	JSON jumps = curMenu.getArray("quickJumps");
+			//		
+				//} catch (RuntimeException e) {
+				//	
+				//}
 			}
+			
 	
 			//load the screens
 			JSON jsonScreens = json.getArray("screens");
@@ -164,22 +174,25 @@ public class OZ extends PApplet {
 
 		//Check if the active menu has a special subscreen
 		if (activeMenu != null) {
-			//if its the same command that brought it up, dismiss 
-			if (activeMenu == menus.get(key)) {
+			//if it has a special subscreen
+			if (activeMenu.handleKeyPressed(key)) {
+				updated = true;
+			//if its the same command that brought it up, dismiss
+			} else if (activeMenu == menus.get(key)) {
 				activeMenu.leaveScreen();
 				activeMenu = null;
 				updated = true;
-			//if it has a special subscreen
-			} else {
-				if (activeMenu.handleKeyPressed(key)) {
-					updated = true;
-				}
 			}
 		//Check if the active screen has a special subscreen
 		} else if (activeScreen.handleKeyPressed(key)) {
-			updated = true;			
+			updated = true;
+		//Check for global menus
+		} else if (menus.containsKey(key)) {
+			activeMenu = menus.get(key);
+			updated = true;
+		}
 		//Any other key actions
-		} else {
+		else {
 			if (key == 'h') {
 				hide = !hide;
 				updated = true;

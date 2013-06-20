@@ -1,5 +1,5 @@
 {
-	"ip": "192.168.1.102",
+	"ip": "192.168.1.111",
 	"menus": [
 		{
 			"key": '1',
@@ -46,7 +46,6 @@
 		{
 			"key": '2',
 			"paths": ["stowage_tab_open_p1.png","stowage_tab_open_p2.png"],
-            "quickJumps": []
 		}
 	],
 	"screens": [
