@@ -100,20 +100,25 @@ public class OZ extends PApplet {
 	
 			//load the menus
 			JSON jsonMenus = json.getArray("menus");
+			
 			for (int i = 0; i < jsonMenus.length(); i++) {
+				
 				JSON curMenu = jsonMenus.getJSON(i);
-				//setup a map describing how special keys affect an individual screen.
 				menus.put(curMenu.getString("key").charAt(0), new Screen(curMenu, this));
 				
-				//load the quick jumps
 				try {
+					
+					//load the quick jumps
 					JSON jumps = curMenu.getArray("quickJumps");
+					
 					for (int j = 0; j < jumps.length(); j++) {
 						JSON curJump = jumps.getJSON(j);
 						quickJumps.put(curJump.getString("key").charAt(0), curJump.getString("path"));
 					}
+					
 					//TODO ew...
 					navigationMenuPath = menus.get(curMenu.getString("key").charAt(0)).getOriginalPath();
+					
 				} catch (RuntimeException e) {
 					//it didn't have the quick jumps
 				}
@@ -122,6 +127,7 @@ public class OZ extends PApplet {
 	
 			//load the screens
 			JSON jsonScreens = json.getArray("screens");
+			
 			for (int i = 0; i < jsonScreens.length(); i++) {
 				screens.add(new Screen(jsonScreens.getJSON(i), this)); 
 			}
@@ -130,6 +136,7 @@ public class OZ extends PApplet {
 			screenIndex = 0;
 			activeMenu = null;
 			hide = false;
+			
 		} catch (RuntimeException e) {
 			System.out.println("Error when parsing json file");
 			e.printStackTrace();
@@ -156,6 +163,7 @@ public class OZ extends PApplet {
 				}
 				activeMenu = null;
 				updated = true;
+				
 			} else if (keyCode == RIGHT) {
 				if (screenIndex < screens.size()-1) {
 					activeScreen.leaveScreen();
@@ -163,10 +171,13 @@ public class OZ extends PApplet {
 				}
 				activeMenu = null;
 				updated = true;
+				
 			} else if (keyCode == UP) {
 				updated = activeMenu == null ? activeScreen.scrollUp() : activeMenu.scrollUp();
+				
 			} else if (keyCode == DOWN) {
 				updated = activeMenu == null ? activeScreen.scrollDown() : activeMenu.scrollDown();
+				
 			}
 		}
 
@@ -175,6 +186,7 @@ public class OZ extends PApplet {
 			//if it has a special sub screen
 			if (activeMenu.handleKeyPressed(key)) {
 				updated = true;
+				
 			//if the active menu is the navigation menu, handle any quick jumps
 			} else if (quickJumps.containsKey(key) && activeMenu.getOriginalPath() == navigationMenuPath) {
 				int newIndex =  getScreenIndex(quickJumps.get(key));
@@ -183,25 +195,29 @@ public class OZ extends PApplet {
 					activeMenu.leaveScreen();
 					activeMenu = null;
 					updated = true;
+					
 				} else {
 					System.out.println("Couldn't find the screen to jump to using: " + key);
 				}
+				
 			//if its the same command that brought it up, dismiss
 			} else if (activeMenu == menus.get(key)) {
 				activeMenu.leaveScreen();
 				activeMenu = null;
 				updated = true;
 			}
+			
 		//Check if the active screen has a special sub screen
 		} else if (activeScreen.handleKeyPressed(key)) {
 			updated = true;
+			
 		//Check for global menus
 		} else if (menus.containsKey(key)) {
 			activeMenu = menus.get(key);
 			updated = true;
-		}
+			
 		//Any other key actions
-		else {
+		} else {
 			if (key == 'h') {
 				hide = !hide;
 				updated = true;
@@ -318,6 +334,7 @@ public class OZ extends PApplet {
 			if (socket != null) socket.close();
 			if (streamOut != null) streamOut.close();
 			if (streamIn != null) streamIn.close();
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -340,9 +357,11 @@ public class OZ extends PApplet {
 				System.out.println("Sending message: " + msg);
 				streamOut.writeBytes(msg);
 				streamOut.flush();
+				
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			
 		} else{
 			// if system is not connected
 			System.out.println("Not connected.");
@@ -359,6 +378,7 @@ public class OZ extends PApplet {
 			if (streamOut != null) streamOut.close();
 			if (streamIn != null) streamIn.close();
 			connected = false;
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -387,6 +407,7 @@ public class OZ extends PApplet {
 	                recThread = new Thread(recRunnable);
 	                recThread.start();
 	                break;
+	                
 				} catch (IOException e) {
 					e.printStackTrace();
 					disconnect();
@@ -397,6 +418,7 @@ public class OZ extends PApplet {
 				//Wait a bit before connecting again.
 				try {
 					Thread.sleep(1000);
+					
 				} catch (Exception e) {
 					System.out.println("Error trying to sleep");
 				}
@@ -405,7 +427,8 @@ public class OZ extends PApplet {
 			//If it wasn't able to connect.
 			if (tries == numRetries && !socket.isConnected()) {
 				System.out.println("Failed to connect to client.");
-				//exit();
+				exit();
+				
 			} else if (socket.isConnected()) {
 				System.out.println("Connected to client");
 			}
@@ -422,10 +445,11 @@ public class OZ extends PApplet {
 				//Log.v(TAG, "receive socket ");
 				streamIn  = new DataInputStream(socket.getInputStream()); // sets up input stream
 				connected = true; // sets connection flag to true
-			}
-			catch(IOException ioe) {  
+			
+			} catch(IOException ioe) {  
 				//Log.v(TAG, "Error getting input stream: " + ioe);
 			}
+			
 			// when connected, this thread will stay in this while loop
 			while (connected) {  
 				
