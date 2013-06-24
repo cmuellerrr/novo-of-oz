@@ -36,7 +36,7 @@ public class OZ extends PApplet {
 
 	List<Screen> screens;
 	Map<Character, Screen> menus;
-	Map<Character, String> quickJumps;
+	Map<Character, String> quickNav;
 	String navigationMenuPath;
 	int screenIndex;
 	Screen activeMenu;
@@ -93,35 +93,25 @@ public class OZ extends PApplet {
 	private void setupScreens() {
 		screens = new ArrayList<Screen>();
 		menus = new HashMap<Character, Screen>();
-		quickJumps = new HashMap<Character, String>();
+		quickNav = new HashMap<Character, String>();
 
 		try {	
 			JSON json = JSON.load(dataPath("proto.json"));
+				
+			//load the quick navigation
+			JSON jumps = json.getArray("quickNav");
+				
+			for (int j = 0; j < jumps.length(); j++) {
+				JSON curNav = jumps.getJSON(j);
+				quickNav.put(curNav.getString("key").charAt(0), curNav.getString("path"));
+			}
 	
 			//load the menus
 			JSON jsonMenus = json.getArray("menus");
 			
 			for (int i = 0; i < jsonMenus.length(); i++) {
-				
 				JSON curMenu = jsonMenus.getJSON(i);
 				menus.put(curMenu.getString("key").charAt(0), new Screen(curMenu, this));
-				
-				try {
-					
-					//load the quick jumps
-					JSON jumps = curMenu.getArray("quickJumps");
-					
-					for (int j = 0; j < jumps.length(); j++) {
-						JSON curJump = jumps.getJSON(j);
-						quickJumps.put(curJump.getString("key").charAt(0), curJump.getString("path"));
-					}
-					
-					//TODO ew...
-					navigationMenuPath = menus.get(curMenu.getString("key").charAt(0)).getOriginalPath();
-					
-				} catch (RuntimeException e) {
-					//it didn't have the quick jumps
-				}
 			}
 			
 	
@@ -181,24 +171,23 @@ public class OZ extends PApplet {
 			}
 		}
 
+		//handle any quick navigation
+		if (quickNav.containsKey(key)) {
+			int newIndex =  getScreenIndex(quickNav.get(key));
+			if (newIndex >= 0) {
+				screenIndex = newIndex;
+				if (activeMenu != null) {
+					activeMenu.leaveScreen();
+					activeMenu = null;
+				}
+				updated = true;
+			}
+			
 		//Check if the active menu has a special sub screen
-		if (activeMenu != null) {
+		} else if (activeMenu != null) {
 			//if it has a special sub screen
 			if (activeMenu.handleKeyPressed(key)) {
 				updated = true;
-				
-			//if the active menu is the navigation menu, handle any quick jumps
-			} else if (quickJumps.containsKey(key) && activeMenu.getOriginalPath() == navigationMenuPath) {
-				int newIndex =  getScreenIndex(quickJumps.get(key));
-				if (newIndex >= 0) {
-					screenIndex = newIndex;
-					activeMenu.leaveScreen();
-					activeMenu = null;
-					updated = true;
-					
-				} else {
-					System.out.println("Couldn't find the screen to jump to using: " + key);
-				}
 				
 			//if its the same command that brought it up, dismiss
 			} else if (activeMenu == menus.get(key)) {

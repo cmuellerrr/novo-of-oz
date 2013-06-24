@@ -1,47 +1,47 @@
 {
 	"ip": "192.168.1.111",
+	"quickNav": [
+		{
+			"key": '1',
+			"path": "step_1_1.png"
+		},
+		{
+			"key": '2',
+			"path": "step_2_1.png"
+		},
+		{
+			"key": '3',
+			"path": "step_3_1.png"
+		},
+		{
+			"key": '4',
+			"path": "step_4.png"
+		},
+		{
+			"key": '5',
+			"path": "step_5_1.png"
+		},
+		{
+			"key": '6',
+			"path": "step_6.png"
+		},
+		{
+			"key": '7',
+			"path": "step_7.png"
+		},
+		{
+			"key": '8',
+			"path": "step_8.png"
+		},
+		{
+			"key": '9',
+			"path": "step_9.png"
+		}
+	],
 	"menus": [
 		{
 			"key": 'n',
 			"paths": ["navigate_tab_open.png"],
-			"quickJumps": [
-				{
-				"key": '1',
-				"path": "step_1_1.png"
-				},
-				{
-				"key": '2',
-				"path": "step_2_1.png"
-				},
-				{
-				"key": '3',
-				"path": "step_3_1.png"
-				},
-				{
-				"key": '4',
-				"path": "step_4.png"
-				},
-				{
-				"key": '5',
-				"path": "step_5_1.png"
-				},
-				{
-				"key": '6',
-				"path": "step_6.png"
-				},
-				{
-				"key": '7',
-				"path": "step_7.png"
-				},
-				{
-				"key": '8',
-				"path": "step_8.png"
-				},
-				{
-				"key": '9',
-				"path": "step_9.png"
-				}
-			]
 		},
 		{
 			"key": '2',
