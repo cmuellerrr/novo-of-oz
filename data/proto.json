@@ -68,39 +68,35 @@
 		},
 		{
 			"key": 'a',
-			"path": "step_1_1_p1_c2.png"
+			"path": "step_1_1_p1_c3.png"
 		},
 		{
 			"key": 's',
-			"path": "step_2_1_p1_c2.png"
+			"path": "step_2_1_p1_c3.png"
 		},
 		{
 			"key": 'd',
-			"path": "step_3_1_p1_c2.png"
+			"path": "step_3_1_p1_c3.png"
 		},
 		{
 			"key": 'f',
-			"path": "step_4_p1_c2.png"
+			"path": "step_4_p1_c3.png"
 		},
 		{
 			"key": 'g',
-			"path": "step_5_1_p1_c2.png"
+			"path": "step_5_1_p1_c3.png"
 		},
 		{
 			"key": 'h',
-			"path": "step_6_p1_c2.png"
+			"path": "step_6_p1_c3.png"
 		},
 		{
 			"key": 'j',
-			"path": "step_7_p1_c2.png"
-		},
-		{
-			"key": 'k',
-			"path": "step_8_p1_c2.png"
+			"path": "step_7_p1_c3.png"
 		},
 		{
 			"key": 'l',
-			"path": "step_9.png"
+			"path": "step_9_p1_c3.png"
 		}
 	],
 	"menus": [
