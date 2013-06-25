@@ -114,7 +114,7 @@
 		},
 		{
 			"key": 'b',
-			"paths": ["menu_stowage_col.png","menu_stowage_jem.png","menu_stowage_usl.png"],
+			"paths": ["menu_stowage_jem.png","menu_stowage_usl.png","menu_stowage_col.png"],
 		}
 	],
 	"screens": [
