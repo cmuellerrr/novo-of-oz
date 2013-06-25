@@ -188,7 +188,7 @@ public class OZ extends PApplet {
 				updated = true;
 			}
 			
-		//Check if the active menu has a special sub screen
+		//Check for changes from an active menu
 		} else if (activeMenu != null) {
 			//if it has a special sub screen
 			if (activeMenu.handleKeyPressed(key)) {
@@ -198,6 +198,11 @@ public class OZ extends PApplet {
 			} else if (activeMenu == menus.get(key)) {
 				activeMenu.leaveScreen();
 				activeMenu = null;
+				updated = true;
+			
+			//check for global menu items
+			} else if (menus.containsKey(key)) {
+				activeMenu = menus.get(key);
 				updated = true;
 			}
 			
