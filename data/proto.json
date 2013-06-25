@@ -139,7 +139,7 @@
 			"subScreens": []
 		},
 		{
-			"paths": ["step_1_1_p1_c1.png","step_1_1_p2_c1.png","step_1_1_p3_c1.png"],
+			"paths": ["step_1_1_p1_c1.png","step_1_1_p2_c1.png"],
 			"subScreens": []
 		},
 		{
@@ -199,7 +199,7 @@
 			"subScreens": []
 		},
 		{
-			"paths": ["step_1_1_p1_c2.png","step_1_1_p2_c2.png","step_1_1_p3_c2.png"],
+			"paths": ["step_1_1_p1_c2.png","step_1_1_p2_c2.png"],
 			"subScreens": []
 		},
 		{
@@ -259,7 +259,7 @@
 			"subScreens": []
 		},
 		{
-			"paths": ["step_1_1_p1_c3.png","step_1_1_p2_c3.png","step_1_1_p3_c3.png"],
+			"paths": ["step_1_1_p1_c3.png","step_1_1_p2_c3.png"],
 			"subScreens": []
 		},
 		{
@@ -312,10 +312,6 @@
 		},
 		{
 			"paths": ["step_7_p1_c3.png"],
-			"subScreens": []
-		},
-		{
-			"paths": ["step_8_p1_c3.png"],
 			"subScreens": []
 		},
 		{
