@@ -36,11 +36,13 @@ public class OZ extends PApplet {
 
 	List<Screen> screens;
 	Map<Character, Screen> menus;
-	Map<Character, String> quickNav;
-	String navigationMenuPath;
 	int screenIndex;
 	Screen activeMenu;
+	
+	Map<Character, String> quickNav;
+	Character hideKey;
 	boolean hide;
+	
 	Minim minim;
 	AudioSample tone;
 
@@ -61,7 +63,7 @@ public class OZ extends PApplet {
 		
 		size(screenW, screenH);
 		
-		setupScreens();
+		setupPrototype();
 		JSON json = JSON.load(dataPath("proto.json"));
 		connect(json.getString("ip"));
 		
@@ -90,13 +92,16 @@ public class OZ extends PApplet {
 	 * and how input affects each one.  These special interactions 
 	 * give us flexibility in how we can interact with the prototype.
 	 */
-	private void setupScreens() {
+	private void setupPrototype() {
 		screens = new ArrayList<Screen>();
 		menus = new HashMap<Character, Screen>();
 		quickNav = new HashMap<Character, String>();
 
 		try {	
 			JSON json = JSON.load(dataPath("proto.json"));
+			
+			//get the hide key
+			hideKey = json.getString("hide").charAt(0);
 				
 			//load the quick navigation
 			JSON jumps = json.getArray("quickNav");
@@ -207,7 +212,7 @@ public class OZ extends PApplet {
 			
 		//Any other key actions
 		} else {
-			if (key == 'h') {
+			if (key == hideKey) {
 				hide = !hide;
 				updated = true;
 			}
