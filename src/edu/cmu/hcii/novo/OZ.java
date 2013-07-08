@@ -216,7 +216,9 @@ public class OZ extends PApplet {
 			updated = true;
 			
 		//Any other key actions
-		} else {
+		} 
+		
+		if (!updated) {
 			if (key == hideKey) {
 				hide = !hide;
 				updated = true;
