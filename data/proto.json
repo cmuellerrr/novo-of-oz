@@ -67,7 +67,7 @@
 		{
 			"key": 'b',
 			"paths": ["n_stowage_menu.png"],
-		}
+		},
 		{
 			"key": 'v',
 			"paths": ["n_annotations.png"],
@@ -103,7 +103,7 @@
 		{
 			"key": 'x',
 			"paths": ["n_annotations_step.png"],
-		},
+		}
 	],
 	"screens": [
 		{
@@ -111,15 +111,15 @@
 			"subScreens": []
 		},
 		{
-			"paths": ["n_stowage_jem_p1.png"],
+			"paths": ["n_JEM.png"],
 			"subScreens": []
 		},
 		{
-			"paths": ["n_stowage_usl_p1.png","stowage_usl_p2.png"],
+			"paths": ["n_US LAB.png"],
 			"subScreens": []
 		},
 		{
-			"paths": ["n_stowage_col_p1.png","stowage_col_p2.png"],
+			"paths": ["n_COL.png"],
 			"subScreens": []
 		},
 		{
